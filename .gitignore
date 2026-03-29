@@ -1,0 +1,65 @@
+# =========================
+# Unreal Engine .gitignore
+# =========================
+
+# Build files
+Binaries/
+Build/
+DerivedDataCache/
+Intermediate/
+Saved/
+
+# Visual Studio files
+.vs/
+*.VC.db
+*.VC.opendb
+*.sln
+*.sdf
+*.opensdf
+
+# Rider / JetBrains
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.temp
+
+# Compiled source files
+*.obj
+*.o
+*.so
+*.dll
+*.exe
+
+# Unreal auto-generated files
+*.generated.h
+
+# Backup files
+*.bak
+*.backup
+
+# Crash reports
+Saved/Crashes/
+
+# Shader cache
+DerivedDataCache/
+
+# Packaging
+*.ipa
+*.apk
+
+# Ignore user-specific config
+Saved/Config/WindowsEditor/
+
+# Keep these important folders
+!Content/
+!Config/
+!Source/
+!*.uproject
