@@ -1,4 +1,4 @@
-#include "BreakableActor.h"
+﻿#include "BreakableActor.h"
 #include "Components/StaticMeshComponent.h"
 #include "Enemy.h"
 
@@ -6,6 +6,9 @@ ABreakableActor::ABreakableActor()
 {
     Mesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Mesh"));
     RootComponent = Mesh;
+
+    
+    Mesh->SetCollisionProfileName(TEXT("BlockAll"));
 
     Mesh->SetSimulatePhysics(true);
     Mesh->SetNotifyRigidBodyCollision(true);

@@ -4,6 +4,8 @@
 #include "GameFramework/Actor.h"
 #include "BreakableActor.generated.h"
 
+class UStaticMeshComponent;
+
 UCLASS()
 class GAMEPLAYSYSTEMSLAB_API ABreakableActor : public AActor
 {
@@ -24,4 +26,3 @@ public:
         UPrimitiveComponent* OtherComp, FVector NormalImpulse,
         const FHitResult& Hit);
 };
-
