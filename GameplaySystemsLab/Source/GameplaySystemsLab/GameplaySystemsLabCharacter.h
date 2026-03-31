@@ -19,9 +19,11 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Stats")
 	float MaxHealth;
 
+	UFUNCTION(BlueprintCallable, Category = "Stats")
+	float GetHealthPercent() const;
+
 	// Combat & Health Functions
 	void Attack();
-	float GetHealthPercent() const;
 	void AddHealth(float Amount);
 
 protected:

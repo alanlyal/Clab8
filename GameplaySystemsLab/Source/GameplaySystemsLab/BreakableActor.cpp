@@ -1,38 +1,39 @@
 ﻿#include "BreakableActor.h"
 #include "Components/StaticMeshComponent.h"
 #include "Enemy.h"
+#include "Kismet/GameplayStatics.h"
 
 ABreakableActor::ABreakableActor()
 {
-    Mesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Mesh"));
-    RootComponent = Mesh;
+	Mesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Mesh"));
+	RootComponent = Mesh;
 
-    
-    Mesh->SetCollisionProfileName(TEXT("BlockAll"));
 
-    Mesh->SetSimulatePhysics(true);
-    Mesh->SetNotifyRigidBodyCollision(true);
+	Mesh->SetCollisionProfileName(TEXT("BlockAll"));
 
-    Mesh->OnComponentHit.AddDynamic(this, &ABreakableActor::OnHit);
+	Mesh->SetSimulatePhysics(true);
+	Mesh->SetNotifyRigidBodyCollision(true);
+
+	Mesh->OnComponentHit.AddDynamic(this, &ABreakableActor::OnHit);
 }
 
 void ABreakableActor::BeginPlay()
 {
-    Super::BeginPlay();
+	Super::BeginPlay();
 }
 
 void ABreakableActor::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor,
-    UPrimitiveComponent* OtherComp, FVector NormalImpulse,
-    const FHitResult& Hit)
+	UPrimitiveComponent* OtherComp, FVector NormalImpulse,
+	const FHitResult& Hit)
 {
-    if (OtherActor && OtherActor != this)
-    {
-        AEnemy* Enemy = Cast<AEnemy>(OtherActor);
+	if (OtherActor && OtherActor != this)
+	{
+		AEnemy* Enemy = Cast<AEnemy>(OtherActor);
 
-        if (Enemy)
-        {
-            Enemy->TakeDamage(50.f);
-            Destroy();
-        }
-    }
+		if (Enemy)
+		{
+			UGameplayStatics::ApplyDamage(Enemy, 50.f, nullptr, this, nullptr);
+			Destroy();
+		}
+	}
 }

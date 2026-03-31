@@ -3,26 +3,33 @@
 
 AEnemy::AEnemy()
 {
-    PrimaryActorTick.bCanEverTick = true;
-    Health = 100.f;
+	PrimaryActorTick.bCanEverTick = true;
+	Health = 100.f;
+
+	Mesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Mesh"));
+	RootComponent = Mesh;
+	Mesh->SetCollisionProfileName(TEXT("BlockAllDynamic"));
 }
 
 void AEnemy::BeginPlay()
 {
-    Super::BeginPlay();
+	Super::BeginPlay();
 }
 
 void AEnemy::Tick(float DeltaTime)
 {
-    Super::Tick(DeltaTime);
+	Super::Tick(DeltaTime);
 }
 
-void AEnemy::TakeDamage(float DamageAmount)
+float AEnemy::TakeDamage(float DamageAmount, struct FDamageEvent const& DamageEvent,
+	class AController* EventInstigator, AActor* DamageCauser)
 {
-    Health -= DamageAmount;
+	Health -= DamageAmount;
 
-    if (Health <= 0)
-    {
-        Destroy();
-    }
+	if (Health <= 0)
+	{
+		Destroy();
+	}
+
+	return DamageAmount;
 }

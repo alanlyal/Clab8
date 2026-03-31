@@ -13,7 +13,7 @@ AGameplaySystemsLabCharacter::AGameplaySystemsLabCharacter()
 	GetCapsuleComponent()->SetCollisionProfileName(TEXT("Pawn"));
 
 	// Initialize Stats
-	Health = 100.f;
+	Health = 50.f;
 	MaxHealth = 100.f;
 
 	// Don't rotate character with camera

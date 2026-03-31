@@ -7,19 +7,23 @@
 UCLASS()
 class GAMEPLAYSYSTEMSLAB_API AEnemy : public AActor
 {
-    GENERATED_BODY()
+	GENERATED_BODY()
 
 public:
-    AEnemy();
+	AEnemy();
 
 protected:
-    virtual void BeginPlay() override;
+	virtual void BeginPlay() override;
 
 public:
-    virtual void Tick(float DeltaTime) override;
+	virtual void Tick(float DeltaTime) override;
 
-    UPROPERTY(EditAnywhere)
-    float Health;
+	UPROPERTY(EditAnywhere)
+	float Health;
 
-    void TakeDamage(float DamageAmount);
+	UPROPERTY(VisibleAnywhere)
+	class UStaticMeshComponent* Mesh;
+
+	virtual float TakeDamage(float DamageAmount, struct FDamageEvent const& DamageEvent,
+		class AController* EventInstigator, AActor* DamageCauser) override;
 };

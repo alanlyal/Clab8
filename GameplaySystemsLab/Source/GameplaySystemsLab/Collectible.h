@@ -7,23 +7,23 @@
 UCLASS()
 class GAMEPLAYSYSTEMSLAB_API ACollectible : public AActor
 {
-    GENERATED_BODY()
+	GENERATED_BODY()
 
 public:
-    ACollectible();
+	ACollectible();
 
 protected:
-    virtual void BeginPlay() override;
+	virtual void BeginPlay() override;
 
 public:
-    UPROPERTY(VisibleAnywhere)
-    class USphereComponent* Sphere;
+	UPROPERTY(VisibleAnywhere)
+	class USphereComponent* Sphere;
 
-    UPROPERTY(VisibleAnywhere)
-    UStaticMeshComponent* Mesh;
+	UPROPERTY(VisibleAnywhere)
+	UStaticMeshComponent* Mesh;
 
-    UFUNCTION()
-    void OnOverlap(UPrimitiveComponent* OverlappedComp, AActor* OtherActor,
-        UPrimitiveComponent* OtherComp, int32 OtherBodyIndex,
-        bool bFromSweep, const FHitResult& SweepResult);
+	UFUNCTION()
+	void OnOverlap(UPrimitiveComponent* OverlappedComp, AActor* OtherActor,
+		UPrimitiveComponent* OtherComp, int32 OtherBodyIndex,
+		bool bFromSweep, const FHitResult& SweepResult);
 };
